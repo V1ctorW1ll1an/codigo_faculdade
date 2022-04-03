@@ -80,16 +80,22 @@ void Imprime(TipoLista Lista)
 TipoApontador Pesquisa(TipoItem item, TipoLista Lista, int porNome)
 { 	
 	int Aux;
-	for (Aux = Lista.Primeiro; Aux < (Lista.Ultimo); Aux++) {
+	if(porNome == 1){
+		for (Aux = Lista.Primeiro; Aux < (Lista.Ultimo); Aux++) {
 	
-		if(Lista.Item[Aux].Nome == item.Nome && porNome)
-			return Aux;
-	
-		else{
-			if (Lista.Item[Aux].Chave==item.Chave)
-				return Aux;
+			if(!(strcmp(Lista.Item[Aux].Nome,item.Nome))){
+				return Aux;	
+			}
 		}
-		
+	}
+	else{
+		for (Aux = Lista.Primeiro; Aux < (Lista.Ultimo); Aux++) {
+			
+			if (Lista.Item[Aux].Chave==item.Chave){
+				return Aux;
+			}	
+		}
+	
 	}
 	return -1;
 }  /* Pesquisar */
